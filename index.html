@@ -11,58 +11,8 @@
     <script src="./assets/javascript/app.js"></script>
     <title>Trivia Game</title>
 </head>
-<body>
-    <style>
-        h1 {
-            text-align: center;
-            font-family: 'Avengeance Heroic Avenger';
-            margin-top: 14px;
-            color: orange;
-            font-size: 50px;
-        }
-        h3 {
-            color: lightgreen;
-        }
-        body {
-            background-image: url("./assets/images/background.jpg");
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-size: 100%;
-            color: white;
-        }
-        .start {
-            text-align: center;
-            margin-top: -14px;
-        }
-        #test {
-            display: none;
-        }
-        .venom {
-            background-image: url("./assets/images/venom.jpg");
-            background-repeat: no-repeat;
-            background-size: 100%;
-        }
-        .btnDone {
-            margin-bottom: 10px;
-        }
-        .btnReset {
-            display: none;
-            margin-top: 20px;
-        }
-        .btnStart:hover {
-            color: white;
-            background: red;
-            border-color: red;
-        }
-        .btnDone:hover {
-            color: white;
-            background: purple;
-            border-color: purple;
-        }
-    </style>
 
+<body>
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -154,55 +104,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        
-        $(document).ready(function() {
-            var correct = 0;
-            var wrong = 0;
-            var noAnswer = 0;
-
-            function getCheckedValue(radioName){
-                var radios = document.getElementsByName(radioName); // Get radio group by-name
-                for (var i = 0; i < radios.length; i++) {
-                    if (radios[i].checked) 
-                    return radios[i].value; // return the checked value
-                }
-            };
-
-            function timer() {
-                for (var i = 1; i < 11; i++)
-                    if (getCheckedValue("question" + i) === "true") {
-                        correct++;
-                    } else if (getCheckedValue("question" + i) === "false") {
-                        wrong++;
-                    } else {
-                        noAnswer++;
-                    }
-                    
-                $("#test").html("Time's Up!<br>")
-                .append("<br>Correct: " + correct)
-                .append("<br>Wrong: " + wrong)
-                .append("<br>Unanswered: " + noAnswer);
-            };
-
-            function testActive () {
-                $("body").css('background-image', 'url("./assets/images/batman.jpg")');
-                $(".btnStart").css('display', 'none');
-                $("#test").css('display', 'block');
-                setTimeout(function() {
-                    timer(); }, 30 * 1000);
-            };
-
-            $(".btnStart").on("click", function () {
-                testActive();
-            });
-            
-            $(".btnDone").on("click", function () {
-                timer();
-            });
-            
-        });
-    </script>
 </body>
+
 </html>
